@@ -5,19 +5,26 @@ app = Flask(__name__)
 
 @app.route("/")
 def check_prices():
-    # Dati simulati (da sostituire con scraping Playwright)
+    # Prezzi simulati (verranno in futuro estratti con Playwright)
     prices = {
-        "BTC": 108950.00,
-        "ETH": 2630.00,
-        "MKR": 1918.00,
-        "HZD": 727.30,
-        "BCH": 508.00,
+        "BTC": 108950.0,
+        "ETH": 2630.0,
+        "MKR": 1918.0,
+        "HZD": 727.3,
+        "BCH": 508.0,
         "ISG": 17.12
     }
 
-    # Invia i dati simulati al webhook di Replit (da personalizzare)
-    webhook_url = "https://eo0bso7t3q5h2f.m.pipedream.net"
-    requests.post(webhook_url, json=prices)
+    # Webhook del Replit
+    webhook_url = "https://b212283c-8104-4ac6-b436-5ca4a5e43d4d-00-3exekcncgaduf.riker.replit.dev/"
+
+    try:
+        response = requests.post(webhook_url, json=prices, timeout=5)
+        print("✅ Dati inviati con successo a Replit.")
+        print("📦 Payload:", prices)
+        print("🔁 Risposta Replit:", response.status_code)
+    except Exception as e:
+        print("❌ Errore nell'invio dati a Replit:", e)
 
     return jsonify({"status": "ok", "data": prices})
 
