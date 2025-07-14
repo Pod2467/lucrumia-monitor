@@ -20,3 +20,5 @@ def check_prices():
     requests.post(webhook_url, json=prices)
 
     return jsonify({"status": "ok", "data": prices})
+    if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
