@@ -16,7 +16,7 @@ def check_prices():
     }
 
     # Invia i dati simulati al webhook di Replit (da personalizzare)
-    webhook_url = "https://YOUR_REPLIT_WEBHOOK_URL"
+    webhook_url = "https://eo0bso7t3q5h2f.m.pipedream.net"
     requests.post(webhook_url, json=prices)
 
     return jsonify({"status": "ok", "data": prices})
